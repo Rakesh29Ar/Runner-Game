@@ -16,7 +16,7 @@ public class PlayerControl_S : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Touchspeed = 1;
+       //Touchspeed = 1;
     }
 
     // Update is called once per frame
