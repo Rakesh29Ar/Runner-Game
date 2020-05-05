@@ -18,7 +18,7 @@ public class CameraCtrl_S : MonoBehaviour
     {
         Vector3 desiredpos = target.position + offset;
         Vector3 smoothedpos = Vector3.Lerp(transform.position, desiredpos, smoothspeed);
-       // smoothedpos.x = target.position.x;
+        smoothedpos.x = 0;
         transform.position = smoothedpos;
         
         //transform.LookAt(target);

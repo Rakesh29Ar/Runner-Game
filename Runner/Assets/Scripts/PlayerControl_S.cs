@@ -23,7 +23,7 @@ public class PlayerControl_S : MonoBehaviour
     void Update()
     {
 
-        transform.position = new Vector3(transform.position.x, transform.position.y, ball.position.z);
+       
 
         if(Input.touchCount>0)
         {
@@ -31,9 +31,19 @@ public class PlayerControl_S : MonoBehaviour
 
             if(touch.phase==TouchPhase.Moved)
             {
-                transform.position = new Vector3(transform.position.x + touch.deltaPosition.x * Touchspeed*Time.deltaTime, transform.position.y, transform.position.z );
+                transform.position = new Vector3(transform.position.x + touch.deltaPosition.x * Touchspeed*Time.deltaTime, transform.position.y, ball.position.z );
+            }
+            if(touch.phase==TouchPhase.Stationary)
+            {
+
+                transform.position = new Vector3(transform.position.x, transform.position.y, ball.position.z);
+
             }
 
+        }
+        else
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, ball.position.z);
         }
 
 
