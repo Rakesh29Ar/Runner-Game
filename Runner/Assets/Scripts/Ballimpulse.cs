@@ -38,12 +38,12 @@ public class Ballimpulse : MonoBehaviour
 
 
         rb.Sleep();
-        Vector3 endpos = new Vector3(Random.Range(-1.4f,1.4f), 0,transform.position.z+ Random.Range(7,10) );
+        Vector3 endpos = new Vector3(Random.Range(-1.4f,1.4f), 0,transform.position.z+ 15 );  //Random.Range(7,10)
         Vector3 Ballvelocity = calculatevelocity(endpos, transform.position, 1);
         transform.rotation = Quaternion.identity;
         // rb.velocity = Ballvelocity;
         ballforce = rb.mass * (Ballvelocity / 1);
-        ballforce.y = 3;
+       // ballforce.y = 3;
        // ballforce = new Vector3(3,3,3);
         rb.AddForce(ballforce, ForceMode.Impulse);
         
@@ -66,6 +66,8 @@ public class Ballimpulse : MonoBehaviour
         Vector3 distance = target - origin;
         Vector3 distancexz = distance;
         distancexz.y = 0f;
+
+        
 
         float dy = distance.y;
         float dxz = distancexz.magnitude;
