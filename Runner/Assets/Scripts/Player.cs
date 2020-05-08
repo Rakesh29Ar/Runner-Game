@@ -7,6 +7,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float Touchspeed;
 
+    [SerializeField]
+    private GameObject trackobj;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,5 +29,6 @@ public class Player : MonoBehaviour
             }
 
         }
+        
     }
 }
