@@ -179,7 +179,7 @@ public class PoolManager : MonoBehaviour
 
         GameObject obstacle = PoolManager.Instance.RequestObstacle();
 
-        obstacle.transform.position = new Vector3(0,0,ballpos.z) + new Vector3(0, 0, ObsDiff * 3);
+        obstacle.transform.position = new Vector3(0,0,ballpos.z) + new Vector3(0, 0, ObsDiff * 3-4);
     }
 
 
