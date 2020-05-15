@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
 
             if (touch.phase == TouchPhase.Moved)
             {
-                transform.position = new Vector3(transform.position.x + touch.deltaPosition.x * Touchspeed * Time.deltaTime, transform.position.y, transform.position.z);
+                transform.localPosition = new Vector3(transform.localPosition.x + touch.deltaPosition.x * Touchspeed * Time.deltaTime, transform.localPosition.y, transform.localPosition.z);
             }
 
         }

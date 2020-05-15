@@ -16,6 +16,8 @@ public class Ball : MonoBehaviour
     [SerializeField]
     private GameObject trackobj;
 
+    
+
     private Rigidbody BallRb;
 
     private float[] LSRforce = { -0.5f,0, 0.5f };
@@ -27,6 +29,9 @@ public class Ball : MonoBehaviour
     float prevZ=0;
     int i = 0;
     bool executed = false;
+
+
+    private bool firsttimeland = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,14 +47,24 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        
+        
+        if(firsttimeland)
+        {
+            firsttimeland = false;
+            // trackobj.GetComponent<Track>().Obsrandpos(transform.position);
+           // PoolManager.Instance.SetObsPos(transform.position);
+        }
+        
+        
         BallRb.Sleep();
-        Debug.Log(transform.position.z);
+        //Debug.Log(transform.position.z);
 
           float currentZ = transform.position.z;
           float difference = currentZ - prevZ;
           prevZ = currentZ;
-          Debug.Log(difference);
-          Debug.Log(difference/2);
+         // Debug.Log(difference);
+          //Debug.Log(difference/2);
 
          /* if (transform.position.x>0.8)
           {
@@ -68,6 +83,10 @@ public class Ball : MonoBehaviour
           }*/
 
         BallRb.AddForce(new Vector3(0, BallForce, 0), ForceMode.Impulse); //testing force for different GM speed
+        PoolManager.Instance.SetObstaclespos(transform.position);
+
+        //try abv liine or below
+       // BallRb.velocity = new Vector3(0, 5, 0);
         
        
         

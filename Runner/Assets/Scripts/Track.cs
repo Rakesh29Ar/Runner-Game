@@ -14,7 +14,7 @@ public class Track : MonoBehaviour
     void Start()
     {
         // ObsSetpos(); 
-        Obsrandpos();
+        //Obsrandpos();
     }
 
     // Update is called once per frame
@@ -41,29 +41,73 @@ public class Track : MonoBehaviour
     //minimum distance between the obstacles
     //
 
-    public void Obsrandpos()
+    public void Obsrandpos(Vector3 ballpos)
     {
 
         int index = 1;
-        float firstlandpos;
-        firstlandpos = 1.56f;
-        int currentobsindex = 0;
+        float firstlandpos=ballpos.z;
+       // firstlandpos = 0;
+        int currentobsindex = 1;
+        float obsposz;
 
 
         nextlandposZ[0] = firstlandpos;
-        for (int i = 1; i < 16; i++)
+        for (int i = 0; i < 15; i++)
         {
-            
-            nextlandposZ[i] = nextlandposZ[i - 1] + ConstobsDiff;
-            int numobstospawn = Random.Range(0, 5);
-            for(int j=0;j<numobstospawn;j++)
+            if (i == 0)
             {
-                float obsposz = Random.Range(nextlandposZ[i - 1] + 3, nextlandposZ[i] - 3);
-                obstacles[currentobsindex].transform.position = new Vector3(0, 0, obsposz);
-                currentobsindex++;
+                obstacles[0].transform.position = new Vector3(0, 0, nextlandposZ[0] + 3);
+            }
+            else
+            {
+                nextlandposZ[i] = nextlandposZ[i - 1] + ConstobsDiff;
+                int numobstospawn = Random.Range(0, 4);
+                for (int j = 0; j < numobstospawn; j++)
+                {
+                    if (j == 0)
+                    {
+                        obsposz = Random.Range(nextlandposZ[i - 1] + 3, nextlandposZ[i] - 3);
+                        obstacles[currentobsindex].transform.position = new Vector3(0, 0, obsposz);
+                        currentobsindex++;
+                    }
+                    else
+                    {
+                        if ((obstacles[currentobsindex - 1].transform.position.z + 3) < nextlandposZ[i] - 3)
+                        {
+                            obsposz = Random.Range(obstacles[currentobsindex - 1].transform.position.z + 3, nextlandposZ[i] - 3);
+                            obstacles[currentobsindex].transform.position = new Vector3(0, 0, obsposz);
+                            currentobsindex++;
+
+                        }
+                        else
+                        {
+                            Debug.LogError("overlap");
+                            break;
+
+                        }
+
+                    }
+                    /* obsposz = Random.Range(nextlandposZ[i - 1] + 3, nextlandposZ[i] - 3);
+                    // obstacles[currentobsindex].transform.position = new Vector3(0, 0, obsposz);
+                    //currentobsindex++;
+                    float prvobsZ = obstacles[currentobsindex - 1].transform.position.z;
+                    float ObsZdiff = obsposz - prvobsZ;
+                    float obsZdiffabs = Mathf.Abs(ObsZdiff);
+                     if(obsZdiffabs>3)
+                     {
+                         obstacles[currentobsindex].transform.position = new Vector3(0, 0, obsposz);
+                         currentobsindex++;
+                     }
+                     else
+                     {
+
+                     }*/
+
+                }
             }
 
-         
+
+
 
         }
 

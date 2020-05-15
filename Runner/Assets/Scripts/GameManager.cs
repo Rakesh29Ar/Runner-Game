@@ -16,8 +16,8 @@ public class GameManager : MonoBehaviour
     {
         transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + Time.deltaTime * speed);
 
-        if(transform.position.z > 477.0f)
-            transform.position = new Vector3(transform.position.x, transform.position.y, -7.0f);
+        /*if(transform.position.z > 477.0f)
+            transform.position = new Vector3(transform.position.x, transform.position.y, -7.0f);*/
 
     }
 }
