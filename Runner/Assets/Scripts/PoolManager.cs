@@ -178,8 +178,15 @@ public class PoolManager : MonoBehaviour
     {
 
         GameObject obstacle = PoolManager.Instance.RequestObstacle();
+        Vector3 dd = new Vector3(0, 0, ballpos.z) + new Vector3(0, 0, ObsDiff * 3);
+        float PosZmax = dd.z - 3;
+        float PosZmin = dd.z - 13;
+        float RandposZ = Random.Range(PosZmin, PosZmax);
 
-        obstacle.transform.position = new Vector3(0,0,ballpos.z) + new Vector3(0, 0, ObsDiff * 3-4);
+
+        obstacle.transform.position =  new Vector3(0, 0, RandposZ);              // new Vector3(0, 0, ObsDiff * 3-4);
+        //total diff 21 so based on that get random variable between that value and spawn from that position by minus with that
+        //then increment the value
     }
 
 
