@@ -12,6 +12,11 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private float maxvalue;
 
+    [SerializeField]
+    private Color LVcolor;
+
+    
+
 
 
 
@@ -65,7 +70,14 @@ public class UIManager : MonoBehaviour
     {
         while(Slider.value<currentvalue)
         {
-            Slider.value += 30f*Time.deltaTime;
+            Slider.value += 60f*Time.deltaTime;
+            //if slider value <25 change slider color to light green
+            //if slider value>25 but less that 75 dark green
+            //if slier value > 75 change color to red
+          
+
+
+
             yield return null;
         }
     }
@@ -77,6 +89,8 @@ public class UIManager : MonoBehaviour
             Slider.value -= 100 * Time.deltaTime;
             yield return null;
         }
+
+        //change slider color to default color
     }
 
 

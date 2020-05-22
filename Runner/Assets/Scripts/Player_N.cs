@@ -7,6 +7,11 @@ public class Player_N : MonoBehaviour
     [SerializeField]
     private float Touchspeed;
 
+    public bool PowerActivated;
+
+    [SerializeField]
+    private ParticleSystem splatterparticle;
+
 
     void Start()
     {
@@ -16,6 +21,9 @@ public class Player_N : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        
+
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
@@ -27,4 +35,8 @@ public class Player_N : MonoBehaviour
 
         }
     }
+
+    
+
+
 }
