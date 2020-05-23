@@ -70,8 +70,8 @@ public class Ball_NS : MonoBehaviour
             
             
             
-            SplatterParticles.transform.position = collision.transform.position;
-            SplatterParticles.Emit(4);
+          /**  SplatterParticles.transform.position = collision.transform.position;
+            SplatterParticles.Emit(4);*/
             
             
             if (PDabs < 0.05&&!FeverMode) //Perfect point distance value from centre, change the value according to size of object
