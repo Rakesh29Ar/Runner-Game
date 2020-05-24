@@ -12,6 +12,8 @@ public class Player_N : MonoBehaviour
     [SerializeField]
     private ParticleSystem splatterparticle;
 
+    public bool infevermode = false;
+
 
     void Start()
     {
@@ -30,7 +32,11 @@ public class Player_N : MonoBehaviour
 
             if (touch.phase == TouchPhase.Moved)
             {
-                transform.localPosition = new Vector3(transform.localPosition.x + touch.deltaPosition.x * Touchspeed * Time.deltaTime, transform.localPosition.y, transform.localPosition.z);
+                if(!infevermode)
+                {
+                    transform.localPosition = new Vector3(transform.localPosition.x + touch.deltaPosition.x * Touchspeed * Time.deltaTime, transform.localPosition.y, transform.localPosition.z);
+                }
+                
             }
 
         }

@@ -10,7 +10,15 @@ public class Obstacle_S : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Player"))
         {
-            Destroy(collision.gameObject);
+            if(!collision.gameObject.GetComponent<Player_N>().infevermode)
+            {
+                collision.transform.DetachChildren();
+
+                Destroy(collision.gameObject);
+            }
+           
+           
+            //do camera effect
         }
     }
 
